@@ -1,7 +1,17 @@
 // bower:scss
 // endbower
-
 @import 'reset';
+
+/*------------------------------------*\
+    MIXINS
+\*------------------------------------*/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
 
 /*------------------------------------*\
     COMMON STYLES
@@ -28,15 +38,32 @@ body {
   font-size: 16px;
   line-height: 1.42857143;
   color: #333;
-  background: #fafafa url(../images/bg.jpg) repeat center;
+  background: #fafafa url(../images/bg.jpg) repeat center fixed;
 }
 
-h1 { font-size: 36px; }
-h2 { font-size: 30px; }
-h3 { font-size: 24px; }
-h4 { font-size: 18px; }
-h5 { font-size: 14px; }
-h6 { font-size: 12px; }
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
 
 p {
   margin: 0 0 20px;
@@ -50,13 +77,13 @@ p {
 
 a {
   color: #ae2167;
-  text-decoration: underline;
+  border-bottom: .1em solid transparent;
+  text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #ae2167;
-  text-decoration: none;
+  border-color: #ae2167;
 }
 
 a:focus {
@@ -73,7 +100,6 @@ a:focus {
   text-align: center;
 }
 
-
 /*------------------------------------*\
     PAGE-WRAP
 \*------------------------------------*/
@@ -83,7 +109,8 @@ a:focus {
   max-width: 960px;
   min-height: 100%;
 
-  margin: 0 auto -140px;
+  margin: 0 auto -200px;
+  padding: 0 0 100px;
 
   text-align: center;
   background: rgba(255, 255, 255, 0.7);
@@ -92,22 +119,52 @@ a:focus {
 .page-wrap:after {
   content: "";
   display: block;
-  height: 140px;
+  height: 200px;
 }
-
 
 /*------------------------------------*\
     HEADER
 \*------------------------------------*/
+
 .header {
-  padding: 20px 30px 50px;
+  overflow: hidden;
+  padding: 10px 100px;
+  text-align: left;
+  font-family: "pt sans narrow";
 }
 
 .contacts {
   float: right;
   text-align: right;
-  font-family: "pt sans narrow";
   font-size: 22px;
+}
+
+/*------------------------------------*\
+    NAVIGATION
+\*------------------------------------*/
+
+.nav {
+  margin-right: 200px;
+
+  li {
+    display: inline-block;
+    padding: 0 30px 10px 0;
+
+    a {
+      text-decoration: none;
+      font-family: "pt sans narrow";
+      font-size: 28px;
+      text-align: center;
+    }
+
+    a:hover {
+      border-color: transparent;
+    }
+  }
+}
+
+.nav a.current {
+  border-bottom: .1em solid #ae2167 !important;
 }
 
 /*------------------------------------*\
@@ -115,7 +172,7 @@ a:focus {
 \*------------------------------------*/
 
 .section {
-  padding: 80px 100px;
+  padding: 10px 100px;
   text-align: left;
 }
 
@@ -133,11 +190,69 @@ a:focus {
   padding: 0 20px 0 0;
 }
 
+/*------------------------------------*\
+    PRICE TABLE
+\*------------------------------------*/
+
+.price {
+  border-collapse: collapse;
+  color: #444;
+  font-size: .8em;
+  text-align: center;
+  background: #fff;
+}
+
+.price .row {
+  background-color: #ddd;
+}
+
+.price tr td.first-child {
+  font-weight: bold;
+  width: 15em;
+}
+
+.price tr td.last-child {
+  font-weight: bold;
+}
+
+.price tr th, .price tr td {
+  padding: .5em .2em;
+  border: 1px solid #ccc;
+  line-height: 1.8em;
+}
+
+.price tr th {
+  background-color: #ccc;
+}
 
 /*------------------------------------*\
     FOOTER
 \*------------------------------------*/
+
 .footer-wrap {
   text-align: center;
-  height: 140px;
+  height: 200px;
+  padding: 0 100px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: "pt sans narrow";
 }
+
+.footer {
+  border-top: 4px solid #2167ae;
+  text-align: left;
+  padding: 20px 0 20px;
+
+  p {
+    font-size: 18px;
+  }
+
+  .contacts {
+    font-size: 18px;
+  }
+
+}
+
+
+
