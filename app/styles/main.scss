@@ -100,6 +100,11 @@ a:focus {
   text-align: center;
 }
 
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
 /*------------------------------------*\
     PAGE-WRAP
 \*------------------------------------*/
@@ -203,26 +208,33 @@ a:focus {
 }
 
 .price .row {
-  background-color: #ddd;
+  background-color: #e1e1e1;
 }
 
 .price tr td.first-child {
-  font-weight: bold;
   width: 15em;
+  text-align: right;
+}
+
+.price tr td.first-child strong {
+  font-weight: bold;
+  color: #194e83;
 }
 
 .price tr td.last-child {
   font-weight: bold;
+  color: #194e83;
 }
 
 .price tr th, .price tr td {
-  padding: .5em .2em;
-  border: 1px solid #ccc;
+  padding: .8em .2em;
   line-height: 1.8em;
+  vertical-align: middle;
 }
 
 .price tr th {
-  background-color: #ccc;
+  background-color: #1d5a99;
+  color: #fff;
 }
 
 /*------------------------------------*\
