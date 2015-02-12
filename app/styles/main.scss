@@ -3,6 +3,19 @@
 @import 'reset';
 
 /*------------------------------------*\
+    VARIABLES
+\*------------------------------------*/
+//** Background color for `<body>`.
+$body-bg: #fafafa !default;
+//** Global text color on `<body>`.
+$text-color: #333 !default;
+//** Global textual link color.
+$headings-color: #2167ae !default;
+$link-color: #ae2167 !default;
+//** Link hover color set via `darken()` function.
+$image_dir: '../images/';
+
+/*------------------------------------*\
     MIXINS
 \*------------------------------------*/
 
@@ -19,8 +32,8 @@
 
 .browsehappy {
   margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
+  background: $body-bg;
+  color: $text-color;
   padding: 0.2em 0;
 }
 
@@ -37,8 +50,9 @@ body {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
-  color: #333;
-  background: #fafafa url(../images/bg.jpg) repeat center fixed;
+  color: $text-color;
+  background-color: $body-bg;
+  background: url($image_dir + "bg.jpg") repeat center fixed;
 }
 
 h1 {
@@ -76,14 +90,14 @@ p {
 }
 
 a {
-  color: #ae2167;
+  color: $link-color;
   border-bottom: .1em solid transparent;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  border-color: #ae2167;
+  border-color: $link-color;
 }
 
 a:focus {
@@ -169,7 +183,7 @@ sup {
 }
 
 .nav a.current {
-  border-bottom: .1em solid #ae2167 !important;
+  border-bottom: .1em solid $link-color !important;
 }
 
 /*------------------------------------*\
@@ -185,8 +199,8 @@ sup {
   margin: 70px 0 20px;
   font-size: 36px;
   line-height: 44px;
-  color: #2167ae;
-  border-bottom: 2px solid #2167ae;
+  color: $headings-color;
+  border-bottom: 2px solid $headings-color;
   font-family: 'PT Sans Narrow', sans-serif;
 }
 
@@ -202,10 +216,10 @@ sup {
 .price {
   width: 100%;
   border-collapse: collapse;
-  color: #444;
+  color: $text-color;
   font-size: .8em;
   text-align: center;
-  background: #fff;
+  background: $body-bg;
 }
 
 .price .row {
@@ -227,7 +241,8 @@ sup {
   color: #194e83;
 }
 
-.price tr th, .price tr td {
+.price tr th,
+.price tr td {
   padding: .8em .2em;
   line-height: 1.8em;
   vertical-align: middle;
@@ -253,7 +268,7 @@ sup {
 }
 
 .footer {
-  border-top: 5px solid #2167ae;
+  border-top: 5px solid $headings-color;
   text-align: left;
   padding: 20px 0 20px;
 
@@ -263,6 +278,54 @@ sup {
 
   .contacts {
     font-size: 18px;
+  }
+
+}
+
+/*------------------------------------*\
+    MOBILE STYLES
+\*------------------------------------*/
+
+@media screen and (max-width: 767px) {
+
+  img {
+    width: 100%;
+  }
+
+  .section,
+  .header,
+  .footer-wrap {
+    padding: 10px 20px;
+  }
+
+  .contacts {
+    float: none;
+    font-size: 18px;
+  }
+
+  .nav {
+    margin:10px 0 0;
+    padding-top: 10px;
+    border-top: 6px solid #ddd;
+
+    li {
+      padding: 0 20px 10px 0;
+
+      a {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .section h2 {
+    margin-top: 30px;
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .price-wrap {
+    width: 100%;
+    overflow: scroll;
   }
 
 }
