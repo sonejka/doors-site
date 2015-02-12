@@ -323,10 +323,21 @@ sup {
     line-height: 34px;
   }
 
-  .price-wrap {
-    width: 100%;
-    overflow: scroll;
-  }
+    .price tr td,
+    .price tr th {
+      display: none;
+    }
+
+    .price tr td:nth-of-type(1),
+    .price tr th:nth-of-type(1),
+
+    .price tr td:nth-of-type(5),
+    .price tr th:nth-of-type(5),
+
+    .price tr td:nth-of-type(8),
+    .price tr th:nth-of-type(8)  {
+      display: table-cell;
+    }
 
 }
 
