@@ -1,7 +1,30 @@
 // bower:scss
 // endbower
-
 @import 'reset';
+
+/*------------------------------------*\
+    VARIABLES
+\*------------------------------------*/
+//** Background color for `<body>`.
+$body-bg: #fafafa !default;
+//** Global text color on `<body>`.
+$text-color: #333 !default;
+//** Global textual link color.
+$headings-color: #2167ae !default;
+$link-color: #ae2167 !default;
+//** Link hover color set via `darken()` function.
+$image_dir: '../images/';
+
+/*------------------------------------*\
+    MIXINS
+\*------------------------------------*/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
 
 /*------------------------------------*\
     COMMON STYLES
@@ -9,8 +32,8 @@
 
 .browsehappy {
   margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
+  background: $body-bg;
+  color: $text-color;
   padding: 0.2em 0;
 }
 
@@ -27,19 +50,37 @@ body {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
-  color: #333;
-  background: #fafafa url(../images/bg.jpg) repeat center;
+  color: $text-color;
+  background-color: $body-bg;
+  background: url($image_dir + "bg.jpg") repeat center fixed;
 }
 
-h1 { font-size: 36px; }
-h2 { font-size: 30px; }
-h3 { font-size: 24px; }
-h4 { font-size: 18px; }
-h5 { font-size: 14px; }
-h6 { font-size: 12px; }
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
 
 p {
-  margin: 0 0 20px;
+  margin: 5px 0 15px;
   font-size: 16px;
   line-height: 24px;
 }
@@ -49,14 +90,14 @@ p {
 }
 
 a {
-  color: #ae2167;
-  text-decoration: underline;
+  color: $link-color;
+  border-bottom: .1em solid transparent;
+  text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #ae2167;
-  text-decoration: none;
+  border-color: $link-color;
 }
 
 a:focus {
@@ -73,6 +114,10 @@ a:focus {
   text-align: center;
 }
 
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
 
 /*------------------------------------*\
     PAGE-WRAP
@@ -83,7 +128,8 @@ a:focus {
   max-width: 960px;
   min-height: 100%;
 
-  margin: 0 auto -140px;
+  margin: 0 auto -200px;
+  padding: 0 0 100px;
 
   text-align: center;
   background: rgba(255, 255, 255, 0.7);
@@ -92,22 +138,52 @@ a:focus {
 .page-wrap:after {
   content: "";
   display: block;
-  height: 140px;
+  height: 200px;
 }
-
 
 /*------------------------------------*\
     HEADER
 \*------------------------------------*/
+
 .header {
-  padding: 20px 30px 50px;
+  overflow: hidden;
+  padding: 10px 100px;
+  text-align: left;
+  font-family: "pt sans narrow";
 }
 
 .contacts {
   float: right;
   text-align: right;
-  font-family: "pt sans narrow";
   font-size: 22px;
+}
+
+/*------------------------------------*\
+    NAVIGATION
+\*------------------------------------*/
+
+.nav {
+  margin-right: 200px;
+
+  li {
+    display: inline-block;
+    padding: 0 30px 10px 0;
+
+    a {
+      text-decoration: none;
+      font-family: "pt sans narrow";
+      font-size: 28px;
+      text-align: center;
+    }
+
+    a:hover {
+      border-color: transparent;
+    }
+  }
+}
+
+.nav a.current {
+  border-bottom: .1em solid $link-color !important;
 }
 
 /*------------------------------------*\
@@ -115,7 +191,7 @@ a:focus {
 \*------------------------------------*/
 
 .section {
-  padding: 80px 100px;
+  padding: 10px 100px;
   text-align: left;
 }
 
@@ -123,8 +199,8 @@ a:focus {
   margin: 70px 0 20px;
   font-size: 36px;
   line-height: 44px;
-  color: #2167ae;
-  border-bottom: 1px solid #2167ae;
+  color: $headings-color;
+  border-bottom: 2px solid $headings-color;
   font-family: 'PT Sans Narrow', sans-serif;
 }
 
@@ -133,11 +209,151 @@ a:focus {
   padding: 0 20px 0 0;
 }
 
+.gallery-image {
+  width: 300px;
+}
+
+/*------------------------------------*\
+    PRICE TABLE
+\*------------------------------------*/
+
+.price {
+  width: 100%;
+  border-collapse: collapse;
+  color: $text-color;
+  font-size: .8em;
+  text-align: center;
+  background: $body-bg;
+}
+
+.price .row {
+  background-color: #ddebf9;
+}
+
+.price tr td.first-child {
+  width: 15em;
+  text-align: right;
+}
+
+.price tr td.first-child strong, b {
+  font-weight: bold;
+  color: #194e83;
+}
+
+.price tr td.last-child {
+  font-weight: bold;
+  color: #194e83;
+}
+
+.price tr th,
+.price tr td {
+  padding: .8em .2em;
+  line-height: 1.8em;
+  vertical-align: middle;
+}
+
+.price tr th {
+  background-color: #1d5a99;
+  color: #fff;
+}
 
 /*------------------------------------*\
     FOOTER
 \*------------------------------------*/
+
 .footer-wrap {
   text-align: center;
-  height: 140px;
+  height: 200px;
+  padding: 0 100px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: "pt sans narrow";
 }
+
+.footer {
+  border-top: 5px solid $headings-color;
+  text-align: left;
+  padding: 20px 0 20px;
+
+  p {
+    font-size: 18px;
+  }
+
+  .contacts {
+    font-size: 18px;
+  }
+
+}
+
+/*------------------------------------*\
+    MOBILE STYLES
+\*------------------------------------*/
+
+@media screen and (max-width: 767px) {
+
+  img {
+    width: 100%;
+  }
+
+  .gallery-image {
+    width: 50%;
+  }
+
+  .section,
+  .header,
+  .footer-wrap {
+    padding: 10px 20px;
+  }
+
+  .page-wrap {
+    padding-bottom: 50px;
+  }
+
+  .contacts {
+    float: none;
+    font-size: 18px;
+  }
+
+  .nav {
+    margin:10px 0 0;
+    padding-top: 10px;
+    border-top: 6px solid #ddd;
+
+    li {
+      padding: 0 20px 10px 0;
+
+      a {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .section h2 {
+    margin-top: 30px;
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .price tr td,
+  .price tr th {
+    display: none;
+  }
+
+  .price tr td:nth-of-type(1),
+  .price tr th:nth-of-type(1),
+  .price tr td:nth-of-type(5),
+  .price tr th:nth-of-type(5),
+  .price tr td:nth-of-type(8),
+  .price tr th:nth-of-type(8) {
+    display: table-cell;
+  }
+
+  .price tr td.first-child {
+    width: auto;
+  }
+
+}
+
+
+
